@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import { AuthContext } from '../../context/AuthContext';
 import { LoginStart, LoginSuccess, LoginFailure } from '../../context/Action';
 import axios from '../../config/axios';
+import LocalStorageService from '../../services/localStorage';
 
 function Copyright(props) {
   return (
@@ -45,7 +46,9 @@ export default function SignIn() {
         identifier: data.get('email'),
         password: data.get('password'),
       });
+
       console.log('user =>', res.data);
+      LocalStorageService.setToken(res.data.jwt);
       dispatch(LoginSuccess(res.data));
     } catch (error) {
       dispatch(LoginFailure());
