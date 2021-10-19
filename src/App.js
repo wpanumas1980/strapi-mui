@@ -4,6 +4,7 @@ import Register from "./pages/register/Register";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profiles";
 import CssBaseline from '@mui/material/CssBaseline';
+import CreatePost from "./pages/createPost/CreatePost";
 function App() {
   return (
     <Router>
@@ -19,6 +20,9 @@ function App() {
         <Route path="/write">
           {user ? <Write /> : <Register />}
         </Route> */}
+        <Route path="/create-post">
+          <CreatePost />
+        </Route>
         <Route path="/login">
           <Login />
         </Route>

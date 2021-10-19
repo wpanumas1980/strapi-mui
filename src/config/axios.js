@@ -23,13 +23,13 @@ axios.interceptors.request.use(
       return response;
     },
     (err) => {
-      if (err.response?.status === 401) {
+      if (err.response?.status === 401 || err.response?.status === 403) {
   
         LocalStorageService.clearToken();
         
         alert('No authorization pls. login again');
 
-        window.location.reload();
+        // window.location.reload();
   
         return Promise.reject(err);
       }
